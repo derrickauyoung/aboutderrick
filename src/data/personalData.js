@@ -71,6 +71,18 @@ export const personalData = {
           outcome: 'More efficient asset management, retrieval, and publishing for animators, leading to faster iteration and higher quality performances for The Hobbit: Desolation of Smaug and The Planet of the Apes trilogy.',
         },
         {
+          title: 'Traderock Auction',
+          description: 'Wrote a functional sell/bid auction site served on github and supabase with JavaScript.',
+          outcome: 'Sold 100 personal items when relocating countries in 2025.',
+          codeUrl: 'https://github.com/derrickauyoung/traderock',
+        },
+        {
+          title: 'About Derrick',
+          description: 'Wrote this personal portfolio site served on github with React.',
+          outcome: 'Learned React in 2025, and well, you've made it here!',
+          codeUrl: 'https://github.com/derrickauyoung/aboutderrick',
+        },
+        {
           title: 'One-Stop Shop for Animation',
           description: 'Developed a comprehensive tool that consolidates various animation inputs from the pipeline into a single interface, improving efficiency and user experience for animators.',
           outcome: 'More efficient workflow and reduced context switching for artists on The Adventures of Tintin (2011).',
