@@ -1,3 +1,4 @@
+import { Github } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 // Dedicated component for project details content
@@ -19,8 +20,10 @@ const ProjectDetails = ({ project }) => {
                 <strong>Outcome:</strong> {projectitem.outcome}
             </p>
         )}
-        {projectitem.codeurl && (
-          {/* Source Code Button */}
+        <div><br></br>
+        </div>
+        <div className="flex gap-3">
+        {projectitem.codeUrl && (
           <a 
             href={projectitem.codeUrl}
             className={`
@@ -33,12 +36,13 @@ const ProjectDetails = ({ project }) => {
             `}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`View source code of ${project.title}`}
+            aria-label={`View source code of ${projectitem.title}`}
           >
             <Github size={16} />
             Source Code
           </a>
         )}
+        </div>
     </div>
   );
 

@@ -84,17 +84,17 @@ export const personalData = {
         {
           title: 'About Derrick',
           description: 'Wrote this personal portfolio site served on github with React.',
-          outcome: 'Learned React in 2025, and well, you've made it here!',
+          outcome: "Learned React in 2025, and well, you've made it here!",
           codeUrl: 'https://github.com/derrickauyoung/aboutderrick',
         },
         {
           title: 'One-Stop Shop for Animation',
-          description: 'Developed a comprehensive tool that consolidates various animation inputs from the pipeline into a single interface, improving efficiency and user experience for animators.',
+          description: 'Developed a comprehensive Python tool (to replace a legacy MEL publish UI) that consolidates various animation inputs from the pipeline into a single interface, improving efficiency and user experience for animators.',
           outcome: 'More efficient workflow and reduced context switching for artists on The Adventures of Tintin (2011).',
         },
         {
           title: 'Jira Cloud Migration',
-          description: 'Updating our current support ticketing system from Jira Server to Jira Cloud, to modernize and streamline Domain Technology support.',
+          description: 'Updating our current support ticketing system in python from Jira Server to Jira Cloud, to modernize and streamline Domain Technology support.',
           outcome: 'Improved reliability, performance, and access to new features for the team.',
         },
       ]
@@ -157,7 +157,7 @@ export const personalData = {
         {
           title: 'Metrics and Reporting',
           description: 'Tracked and analyzed product performance, stability and user satisfaction to inform future development.',
-          outcome: 'Leveraged data-driven insights using instrumentation and grafana dashboards, to continuously improve products and demonstrate value to stakeholders.',
+          outcome: 'Leveraged data-driven insights using instrumentation and grafana dashboards, to garner resources for a pipeline refactor in 2024 to continuously improve products and demonstrate value to stakeholders.',
         },
       ],
     },
