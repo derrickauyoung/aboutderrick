@@ -36,6 +36,8 @@ export const personalData = {
      { skill: 'Python', level: 90 },
      { skill: 'MEL', level: 95 },
      { skill: 'C++', level: 85 },
+     { skill: 'Javascript', level: 85 },
+     { skill: 'React', level: 75 },
     ],
     tools: [
       { skill: 'Autodesk Maya', level: 95},
@@ -58,7 +60,7 @@ export const personalData = {
       title: 'Software Engineering for Animation and VFX',
       category: 'Engineering',
       description: 'Expertise in developing technical solutions for Animators delivering blockbuster visual effects and character performances.',
-      technologies: ['PySide', 'Python', 'C++', 'Jira API'],
+      technologies: ['PySide', 'Python', 'C++', 'Jira API', 'JavaScript', 'React'],
       demoUrl: 'https://your-demo-url.com',
       codeUrl: 'https://github.com/yourusername/project',
       gradient: 'from-blue-400 to-blue-600', // Tailwind gradient classes
