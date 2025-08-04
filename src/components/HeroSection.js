@@ -4,6 +4,7 @@
 import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { personalData } from '../data/personalData';
+import profileImage from '../assets/DerrickAuyoung.png';
 
 const HeroSection = ({ scrollToSection }) => {
   // Get theme classes from context for consistent styling
@@ -80,7 +81,7 @@ const HeroSection = ({ scrollToSection }) => {
               {/* Display User Picture */}
               <div className="w-80 h-80 rounded-full overflow-hidden shadow-xl transition-all duration-200 hover:shadow-2xl hover:scale-105">
                 <img 
-                  src="/DerrickAuyoung.png" 
+                  src={profileImage} 
                   alt={personalData.name}
                   className="w-full h-full object-cover"
                 />
