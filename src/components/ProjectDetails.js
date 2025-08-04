@@ -19,6 +19,9 @@ const ProjectDetails = ({ project }) => {
                 <strong>Outcome:</strong> {projectitem.outcome}
             </p>
         )}
+        {projectitem.codeurl && (
+            <a href={projectitem.codeurl}>Github Link</a>
+        )}
     </div>
   );
 
