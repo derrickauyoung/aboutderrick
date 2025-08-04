@@ -71,9 +71,19 @@ export const personalData = {
           outcome: 'More efficient asset management, retrieval, and publishing for animators, leading to faster iteration and higher quality performances for The Hobbit: Desolation of Smaug and The Planet of the Apes trilogy.',
         },
         {
+          title: 'One-Stop Shop for Animation',
+          description: 'Developed a comprehensive Python tool (to replace a legacy MEL publish UI) that consolidates various animation inputs from the pipeline into a single interface, improving efficiency and user experience for animators.',
+          outcome: 'More efficient workflow and reduced context switching for artists on The Adventures of Tintin (2011).',
+        },
+        {
           title: 'spReticle Update',
           description: 'Repaired legacy spReticle instance at Wētā to work with viewport 2.0 and upgraded to latest open source features in C++.',
           outcome: 'Less maintenance of broken legacy software, documented approach and current state for the company, improved practical C++ and openGL knowledge.',
+        },
+        {
+          title: 'Jira Cloud Migration',
+          description: 'Updating our current support ticketing system in python from Jira Server to Jira Cloud, to modernize and streamline Domain Technology support.',
+          outcome: 'Improved reliability, performance, and access to new features for the team.',
         },
         {
           title: 'Traderock Auction',
@@ -86,16 +96,6 @@ export const personalData = {
           description: 'Wrote this personal portfolio site served on github with React.',
           outcome: "Learned React in 2025, and well, you've made it here!",
           codeUrl: 'https://github.com/derrickauyoung/aboutderrick',
-        },
-        {
-          title: 'One-Stop Shop for Animation',
-          description: 'Developed a comprehensive Python tool (to replace a legacy MEL publish UI) that consolidates various animation inputs from the pipeline into a single interface, improving efficiency and user experience for animators.',
-          outcome: 'More efficient workflow and reduced context switching for artists on The Adventures of Tintin (2011).',
-        },
-        {
-          title: 'Jira Cloud Migration',
-          description: 'Updating our current support ticketing system in python from Jira Server to Jira Cloud, to modernize and streamline Domain Technology support.',
-          outcome: 'Improved reliability, performance, and access to new features for the team.',
         },
       ]
     },
