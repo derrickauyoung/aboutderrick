@@ -1,0 +1,178 @@
+/* App.css - Tailwind-compatible styling foundation for your portfolio */
+
+/* 
+  Your components use Tailwind CSS classes, so this file focuses on:
+  1. Global enhancements that work with Tailwind
+  2. Custom animations and effects
+  3. Smooth theme transitions
+  
+  Since you're using Tailwind's color system (bg-blue-500, text-gray-700, etc.),
+  we don't need CSS custom properties for colors - Tailwind handles that.
+*/
+
+/* 
+  Global enhancements for Tailwind-based components
+  These work alongside Tailwind's utility classes
+*/
+html {
+  /* Enables smooth scrolling when clicking navigation links */
+  scroll-behavior: smooth;
+  /* Prevents horizontal overflow on mobile devices */
+  overflow-x: hidden;
+}
+
+body {
+  /* Enhanced font smoothing for crisp text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  /* Prevents horizontal scrolling issues */
+  overflow-x: hidden;
+}
+
+/* 
+  Main App container styling
+  This provides the overall structure for your portfolio layout
+*/
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Prevents horizontal scrolling issues */
+  overflow-x: hidden;
+}
+
+/* 
+  Main content area styling
+  Contains all your portfolio sections between navigation and footer
+*/
+main {
+  flex: 1;
+  width: 100%;
+}
+
+/* 
+  Enhanced animations and effects for Tailwind components
+  These work alongside your existing Tailwind hover effects
+*/
+
+/* Smooth page-wide transitions for theme switching */
+* {
+  transition: background-color 200ms ease-in-out, 
+              border-color 200ms ease-in-out,
+              color 200ms ease-in-out;
+}
+
+/* Enhanced focus styles for accessibility */
+*:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar styling to match your theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dark theme scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* 
+  Additional animation keyframes that work with your Tailwind transforms
+  These complement the hover effects you already have
+*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* 
+  Utility classes that work alongside Tailwind
+  These provide effects that Tailwind doesn't have built-in
+*/
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* 
+  Enhanced gradient backgrounds for consistency
+  Use these classes with your existing gradient components
+*/
+.gradient-blue-purple {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+}
+
+.gradient-blue-cyan {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+}
+
+/* 
+  Accessibility improvements
+  These ensure your portfolio works well for all users
+*/
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+}
