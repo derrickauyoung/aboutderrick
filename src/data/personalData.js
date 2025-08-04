@@ -1,6 +1,4 @@
 // Personal Information Configuration
-// This file contains all your personal data that populates the website
-// Update this file whenever you want to change content without touching React components
 
 export const personalData = {
   // Basic Information - Update these with your actual details
@@ -69,6 +67,11 @@ export const personalData = {
           title: 'Chronos Motion Pipeline Tool',
           description: 'Lead developer at Wētā Digital on the next-generation motion asset browser for Motion artists for the Avatar sequels, built with PySide2 and Python, that integrates with Autodesk Maya to streamline the animation workflow.',
           outcome: 'More efficient asset management, retrieval, and publishing for animators, leading to faster iteration and higher quality performances for The Hobbit: Desolation of Smaug and The Planet of the Apes trilogy.',
+        },
+        {
+          title: 'spReticle Update',
+          description: 'Repaired legacy spReticle instance at Wētā to work with viewport 2.0 and upgraded to latest open source features in C++.',
+          outcome: 'Less maintenance of broken legacy software, documented approach and current state for the company, improved practical C++ and openGL knowledge.',
         },
         {
           title: 'Traderock Auction',
