@@ -5,13 +5,12 @@ import React from 'react';
 import { Download } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { personalData } from '../data/personalData';
-import resumefile from '../assets/DerrickAuyoung_Resume.pdf';
 
 const handleDownload = () => {
   // Create a temporary link element
   const link = document.createElement('a');
-  link.href = personalData.resume;
-  link.download = {resumefile}; // This will be the downloaded filename
+  link.href = `${process.env.PUBLIC_URL}/DerrickAuyoung_Resume.pdf`;
+  link.download = 'DerrickAuyoung_Resume.pdf'; // This will be the downloaded filename
   
   // Trigger the download
   document.body.appendChild(link);

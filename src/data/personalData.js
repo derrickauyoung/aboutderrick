@@ -6,7 +6,7 @@ export const personalData = {
   tagline: "Animation and Technology Product Leader and Software Engineer",
   description: "I have 22 years of experience in Animation and Visual Effects Technology, working as a pipeline TD, software engineer, head of Motion R&D, and engagement supervisor. I have a passion for empowering users to overcome their technical challenges and achieve their creative goals. I am currently seeking new opportunities to leverage my skills and experience in a dynamic and innovative environment.",
   initials: "DA", // Used for the profile circle if no image is provided
-  resume: "/Resume_DerrickAuyoung_2025-StaffSoftwareEngineer.pdf",
+  resume: "DerrickAuyoung_Resume.pdf", // Path to resume file in the public folder
 
   // About Section - Tell your professional story
   about: {
