@@ -1,14 +1,15 @@
 {
   "files": {
     "main.css": "/aboutderrick/static/css/main.bbb410bf.css",
-    "main.js": "/aboutderrick/static/js/main.a7f7d0a5.js",
+    "main.js": "/aboutderrick/static/js/main.49010c49.js",
     "static/media/DerrickAuyoung.png": "/aboutderrick/static/media/DerrickAuyoung.98a2908d28c4e7dac7f5.png",
+    "static/media/DerrickAuyoung_Resume.pdf": "/aboutderrick/static/media/DerrickAuyoung_Resume.35b11112544506312d60.pdf",
     "index.html": "/aboutderrick/index.html",
     "main.bbb410bf.css.map": "/aboutderrick/static/css/main.bbb410bf.css.map",
-    "main.a7f7d0a5.js.map": "/aboutderrick/static/js/main.a7f7d0a5.js.map"
+    "main.49010c49.js.map": "/aboutderrick/static/js/main.49010c49.js.map"
   },
   "entrypoints": [
     "static/css/main.bbb410bf.css",
-    "static/js/main.a7f7d0a5.js"
+    "static/js/main.49010c49.js"
   ]
 }
