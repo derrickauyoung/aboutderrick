@@ -48,9 +48,9 @@ const ProjectDetails = ({ project }) => {
 
   return (
     <div>
-      <div className="mb-4">
+      <div className={`mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
         <h3 className="text-lg font-semibold">{project.name}</h3>
-        <p className="text-gray-300">{project.description}</p>
+        <p>{project.description}</p>
       </div>
       
       <div className="grid grid-cols-1 gap-4">
