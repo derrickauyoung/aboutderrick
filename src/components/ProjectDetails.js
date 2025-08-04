@@ -20,7 +20,24 @@ const ProjectDetails = ({ project }) => {
             </p>
         )}
         {projectitem.codeurl && (
-            <a href={projectitem.codeurl}>Github Link</a>
+          {/* Source Code Button */}
+          <a 
+            href={projectitem.codeUrl}
+            className={`
+              flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+              border-2 transition-all duration-200 transform hover:-translate-y-0.5
+              ${isDarkMode 
+                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
+                : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
+              }
+            `}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View source code of ${project.title}`}
+          >
+            <Github size={16} />
+            Source Code
+          </a>
         )}
     </div>
   );
