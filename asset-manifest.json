@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/aboutderrick/static/css/main.bbb410bf.css",
-    "main.js": "/aboutderrick/static/js/main.cc5f1d0a.js",
-    "static/media/DerrickAuyoung.png": "/aboutderrick/static/media/DerrickAuyoung.98a2908d28c4e7dac7f5.png",
+    "main.js": "/aboutderrick/static/js/main.f1dbd3dd.js",
+    "static/media/DerrickAuyoung.png": "/aboutderrick/static/media/DerrickAuyoung.390ae6543a356cff8be6.png",
     "static/media/card02.png": "/aboutderrick/static/media/card02.1cd04ec331d7d271370c.png",
     "static/media/card07.png": "/aboutderrick/static/media/card07.9f4a1a62ed8861edf5db.png",
     "static/media/card04.png": "/aboutderrick/static/media/card04.2f5aac493a322660209b.png",
@@ -12,10 +12,10 @@
     "static/media/card06.png": "/aboutderrick/static/media/card06.d045d4573c908804644e.png",
     "index.html": "/aboutderrick/index.html",
     "main.bbb410bf.css.map": "/aboutderrick/static/css/main.bbb410bf.css.map",
-    "main.cc5f1d0a.js.map": "/aboutderrick/static/js/main.cc5f1d0a.js.map"
+    "main.f1dbd3dd.js.map": "/aboutderrick/static/js/main.f1dbd3dd.js.map"
   },
   "entrypoints": [
     "static/css/main.bbb410bf.css",
-    "static/js/main.cc5f1d0a.js"
+    "static/js/main.f1dbd3dd.js"
   ]
 }
