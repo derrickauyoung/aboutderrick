@@ -1,70 +1,9 @@
-import { Github, YoutubeIcon } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import ProjectsSlider from './ProjectsSlider';
 
 // Dedicated component for project details content
 const ProjectDetails = ({ project }) => {
   const { themeClasses, isDarkMode } = useTheme();
-
-  const ProjectItem = ({ projectitem, index }) => (
-    <div className={`p-4 rounded-lg ${
-        isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-gray-50 border border-gray-200'
-    }`}>
-        <h4 className={`font-medium mb-2 ${themeClasses.textPrimary}`}>
-        🚀 {projectitem.title}
-        </h4>
-        <p className={`text-sm ${themeClasses.textSecondary}`}>
-        {projectitem.description}
-        </p>
-        {projectitem.outcome && (
-            <p className={`mt-2 text-sm italic ${themeClasses.textSecondary}`}>
-                <strong>Outcome:</strong> {projectitem.outcome}
-            </p>
-        )}
-        <div><br></br>
-        </div>
-        <div className="flex gap-3">
-        {projectitem.codeUrl && (
-          <a 
-            href={projectitem.codeUrl}
-            className={`
-              flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
-              border-2 transition-all duration-200 transform hover:-translate-y-0.5
-              ${isDarkMode 
-                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
-                : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
-              }
-            `}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View source code of ${projectitem.title}`}
-          >
-            <Github size={16} />
-            Source Code
-          </a>
-        )}
-
-        {projectitem.demoUrl && (
-          <a 
-            href={projectitem.demoUrl}
-            className={`
-              flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
-              border-2 transition-all duration-200 transform hover:-translate-y-0.5
-              ${isDarkMode 
-                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
-                : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
-              }
-            `}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View source code of ${projectitem.title}`}
-          >
-            <YoutubeIcon size={16} />
-            Youtube Demo
-          </a>
-        )}
-        </div>
-    </div>
-  );
 
   return (
     <div>
@@ -75,38 +14,16 @@ const ProjectDetails = ({ project }) => {
       
       <div className="grid grid-cols-1 gap-4">
         <div>
-          <h3 className={`text-xl font-semibold mb-4 ${themeClasses.textPrimary}`}>
-            Key Initiatives
-          </h3>
-          <div className="space-y-4">
-            {project.projectitems.map((projectitem, index) => (
-                <ProjectItem 
-                    key={index} 
-                    projectitem={projectitem} 
-                    index={index} 
-                />
-                ))}
-          </div>
+            <div className="grid grid-cols-1 gap-4">
+            <ProjectsSlider 
+                project={project}
+                themeClasses={themeClasses}
+                isDarkMode={isDarkMode}
+            />
+            </div>
 
         <div className="mt-6">
         
-        </div>
-        {/* Technology Tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
-        {project.technologies.map((tech, techIndex) => (
-            <span 
-            key={techIndex}
-            className={`
-                px-3 py-1 text-xs rounded-full font-medium transition-colors duration-200
-                ${isDarkMode 
-                ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' 
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }
-            `}
-            >
-            {tech}
-            </span>
-        ))}
         </div>
         </div>
       </div>

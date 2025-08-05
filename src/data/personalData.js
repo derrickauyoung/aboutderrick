@@ -59,7 +59,7 @@ export const personalData = {
   // Add as many projects as you want by adding new objects to this array
   projects_text: {
     tagline: "Roles I've held in Animation and Technology",
-    endline: "These are just a few highlights of my career. I have many more projects and experiments on my GitHub profile.",
+    endline: "These are just a few highlights of my career. I have more projects and experiments on my GitHub profile.",
   },
 
   projects: [
@@ -71,43 +71,73 @@ export const personalData = {
       demoUrl: 'https://your-demo-url.com',
       codeUrl: 'https://github.com/yourusername/project',
       gradient: 'from-blue-400 to-blue-600', // Tailwind gradient classes
-      projectitems: [
+      projectItems: [
         {
           title: 'Chronos Motion Pipeline Tool',
           description: 'Lead developer at Wētā Digital on the next-generation motion asset browser for Motion artists for the Avatar sequels, built with PySide2 and Python, that integrates with Autodesk Maya to streamline the animation workflow.',
-          outcome: 'More efficient asset management, retrieval, and publishing for animators, leading to faster iteration and higher quality performances for The Hobbit: Desolation of Smaug and The Planet of the Apes trilogy.',
+          details: [
+            'More efficient asset management, retrieval, and publishing for animators',
+            'Led to faster iteration and higher quality performances for:',
+            '   The Hobbit: Desolation of Smaug (2013)',
+            '   The Planet of the Apes trilogy (2011-2017)',
+          ],
+          technologies: ['PySide2', 'Python'],
         },
         {
           title: 'One-Stop Shop for Animation',
           description: 'Developed a comprehensive Python tool (to replace a legacy MEL publish UI) that consolidates various animation inputs from the pipeline into a single interface, improving efficiency and user experience for animators.',
-          outcome: 'More efficient workflow and reduced context switching for artists on The Adventures of Tintin (2011).',
+          details: [
+            'More efficient workflow and reduced context switching for artists on:',
+            '   The Adventures of Tintin (2011)',
+          ],
+          technologies: ['PySide2', 'Python'],
         },
         {
           title: 'spReticle Update',
           description: 'Repaired legacy spReticle instance at Wētā to work with viewport 2.0 and upgraded to latest open source features in C++.',
-          outcome: 'Less maintenance of broken legacy software, documented approach and current state for the company, improved practical C++ and openGL knowledge.',
+          details: [
+            'Less maintenance of broken legacy software',
+            'Documented approach and current state for the company',
+            'Improved practical C++ and openGL knowledge',
+          ],
+          technologies: ['C++', 'OpenGL'],
         },
         {
           title: 'Jira Cloud Migration',
           description: 'Updating our current support ticketing system in python from Jira Server to Jira Cloud, to modernize and streamline Domain Technology support.',
-          outcome: 'Improved reliability, performance, and access to new features for the team.',
+          details: [
+            'Forward progress on cleaning technical debt',
+            'Improved reliability, performance, and access to new features for the team.',
+          ],
+          technologies: ['Python', 'Pyside2', 'Jira API'],
         },
         {
           title: 'Traderock Auction',
           description: 'Wrote a functional sell/bid auction site served on github and supabase with JavaScript.',
-          outcome: 'Sold 100 personal items when relocating countries in 2025.',
+          details: [
+            'Sold 100 personal items when relocating countries in 2025',
+            'Learned about full stack development with JavaScript and Supabase.',
+          ],
+          technologies: ['JavaScript', 'Supabase'],
           codeUrl: 'https://github.com/derrickauyoung/traderock',
         },
         {
           title: 'About Derrick',
           description: 'Wrote this personal portfolio site served on github with React.',
-          outcome: "Learned React in 2025, and well, you've made it here!",
+          details: [
+            "Learned React in 2025, and well, you've made it here!",
+          ],
+          technologies: ['React'],
           codeUrl: 'https://github.com/derrickauyoung/aboutderrick',
         },
         {
           title: 'Kubb: First Roblox Game',
           description: 'Created my first Roblox game, a casual sports game based on the Scandinavian lawn game Kubb, using Roblox Studio and Lua scripting.',
-          outcome: 'Learned lua and roblox studio platform',
+          details: [
+            'Learned lua and roblox studio platform',
+            'Intro to game design and user interaction',
+          ],
+          technologies: ['Roblox Studio', 'Lua'],
           demoUrl: 'https://youtu.be/64NiKmW_I5I?si=X3WY_RWunXb7W_FJ',
         },
       ]
@@ -120,26 +150,43 @@ export const personalData = {
       demoUrl: 'https://your-demo-url.com',
       codeUrl: 'https://github.com/yourusername/project',
       gradient: 'from-green-400 to-green-600',
-      projectitems: [
+      projectItems: [
         {
           title: 'Strategic Direction and Planning',
           description: 'Gathered requirements and established vision for Animation technology and pipeline.',
-          outcome: 'At Wētā FX, served as Primary Stakeholder for the modern refactor of the Chronos (Motion Pipeline Tool) project.',
+          details: [
+            'Established a clear vision and roadmap for the Motion R&D team',
+            'Aligned work with studio goals and artist needs',
+            'Served as Primary Stakeholder for modern refactor of the Chronos (Motion Pipeline Tool) project',
+          ],
+          technologies: ['Jira', 'Confluence', 'Outlook', 'Teams'],
         },
         {
           title: 'Team Leadership and Development',
           description: 'Mentored and coached engineers, fostering a collaborative and innovative team culture.',
-          outcome: 'Led the Motion R&D team to consistently deliver impactful tools and solutions for artists for blockbuster films, like integrating GPU cached representations of Maya rigging to recover scene performance.',
+          details: [
+            'Led the Motion R&D team to consistently deliver impactful tools and solutions for artists',
+            'Established workflow to increase scene performance by integrating GPU cached representations of Maya rigging',
+          ],
+          technologies: ['Jira', 'Confluence', 'Outlook', 'Teams'],
         },
         {
           title: 'Cross-Department Collaboration',
           description: 'Worked closely with Production, VFX Supervisors, and other departments to align technology solutions with creative needs.',
-          outcome: 'Upheld high standards of collaboration, resulting in successful integration of ML Facial research technology into production for Avatar: The Way of Water.',
+          details: [
+            'Upheld high standards of collaboration',
+            'Successful integration of ML Facial research technology into production for Avatar: The Way of Water.',
+          ],
+          technologies: ['Outlook', 'Teams', 'Jira', 'Confluence'],
         },
         {
           title: 'Recruitment and Hiring',
           description: 'Led hiring efforts to build a strong, diverse team of engineers.',
-          outcome: 'Rebuilt crew numbers after multiple company reorganizations and attrition, maintaining a high-performing team.',
+          details: [
+            'Rebuilt and retained high crew numbers after multiple company reorganizations and attrition',
+            'Maintained a high-performing team',
+          ],
+          technologies: ['Workday', 'Greenhouse', 'Outlook', 'Teams'],
         },
       ],
     },
@@ -151,26 +198,48 @@ export const personalData = {
       demoUrl: 'https://your-demo-url.com',
       codeUrl: 'https://github.com/yourusername/project',
       gradient: 'from-purple-400 to-purple-600',
-      projectitems: [
+      projectItems: [
         {
           title: 'Roadmap Development',
           description: 'Created and maintained product roadmaps for Animation tools and pipeline, aligning with studio objectives and artist needs.',
-          outcome: 'Successfully delivered efficiency initiatives for major projects like Guardians of the Galaxy 3, Avatar: The Way of Water, and Kingdom of the Planet of the Apes, that enhanced artist productivity and satisfaction.',
+          details: [
+            'Successfully delivered efficiency initiatives for major projects:',
+            '   Guardians of the Galaxy 3',
+            '   Avatar: The Way of Water',
+            '   Kingdom of the Planet of the Apes',
+            'Enhanced artist productivity and satisfaction (20%).',
+          ],
+          technologies: ['Jira', 'Confluence'],
         },
         {
           title: 'Stakeholder Engagement',
           description: 'Collaborated with artists, supervisors, and other stakeholders to gather feedback and prioritize features.',
-          outcome: 'Ensured that product development was closely aligned and adapted with user needs and studio goals, successfully delivering new pipelines and tooling.',
+          details: [
+            'Ensured that product development was closely aligned with user needs',
+            'Adapted to studio objectives',
+            'Successfully delivered new pipelines and tooling for 18 major movies and TV series',
+          ],
+          technologies: ['Outlook', 'Teams', 'Jira', 'Confluence'],
         },
         {
           title: 'Agile Methodologies',
           description: 'Implemented Agile practices to improve team efficiency and responsiveness to changing requirements.',
-          outcome: 'Enhanced team collaboration and delivery speed since 2016, resulting in more frequent and reliable releases of tools and features.',
+          details: [
+            'Enhanced team collaboration and delivery speed with regular standups since 2016',
+            'Resulted in more frequent and reliable releases of tools and features',
+            'Standardized reporting and documentation via Confluence',
+          ],
+          technologies: ['Teams', 'Jira', 'Confluence'],
         },
         {
           title: 'Metrics and Reporting',
           description: 'Tracked and analyzed product performance, stability and user satisfaction to inform future development.',
-          outcome: 'Leveraged data-driven insights using instrumentation and grafana dashboards, to garner resources for a pipeline refactor in 2024 to continuously improve products and demonstrate value to stakeholders.',
+          details: [
+            'Leveraged data-driven insights using instrumentation and grafana dashboards',
+            'Garnered resources for a pipeline refactor in 2024',
+            'Continuously improved products and demonstrate value to stakeholders.',
+          ],
+          technologies: ['Grafana', 'Jira', 'Confluence'],
         },
       ],
     },

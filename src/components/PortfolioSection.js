@@ -184,7 +184,7 @@ const PortfolioSection = () => {
         isOpen={!!selectedProject}
         onClose={closeModal}
         title={selectedProject?.title || 'Project Details'}
-        maxWidth="max-w-4xl"
+        maxWidth="max-w-6xl"
       >
         {selectedProject && <ProjectDetails project={selectedProject} />}
       </Modal>
