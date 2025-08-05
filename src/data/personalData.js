@@ -4,30 +4,33 @@ export const personalData = {
   // Basic Information - Update these with your actual details
   name: "Derrick Auyoung",
   tagline: "Animation and Technology Product Leader and Software Engineer",
-  description: "I have 22 years of experience in Animation and Visual Effects Technology, working as a pipeline TD, software engineer, head of Motion R&D, and engagement supervisor. I have a passion for empowering users to overcome their technical challenges and achieve their creative goals. I am currently seeking new opportunities to leverage my skills and experience in a dynamic and innovative environment.",
+  description: "I have 22 years of experience in Animation and Visual Effects Technology, working as a software engineer, motion R&D head of department, and product manager. I am dedicated to help users and organizations overcome their technical challenges and achieve their creative goals.",
+  jobseekline: "I am currently seeking new opportunities to leverage my unique skillset in a dynamic and innovative environment.",
   initials: "DA", // Used for the profile circle if no image is provided
   resume: "DerrickAuyoung_Resume.pdf", // Path to resume file in the public folder
 
   // About Section - Tell your professional story
   about: {
     title: "My Journey",
-    tagline: "Passionate about art and technology, driven by curiosity and learning.",
+    tagline: "Expertise as an Engineer, Motion R&D Head of Department, and Product Manager in Animation Technology",
     paragraphs: [
-      "With a background in computer science and over two decades of hands-on experience, I've developed a deep understanding of Animation tools, workflows, and pipeline technologies. My journey started with curiosity about how VFX was made since the first Jurassic Park premiered in theaters, and it has evolved into a passion for contributing to fantastic visual and interactive experiences.",
-      "I believe in open and transparent communication, continuous improvement, writing clean, maintainable code and staying up-to-date with the latest industry trends. When I'm not coding or decomposing problems into roadmaps and work items, you can find me mentoring other developers, or exploring new technologies and approaches."
+      "With a background in computer science and over two decades of hands-on experience, I've gained a deep understanding of Animation tools, workflows, and pipeline technologies. My journey started when I saw the first 'Jurassic Park' in theaters, and it has evolved into a passion for contributing to fantastic visual and interactive media.",
+      "I believe in open and transparent communication, continuous improvement, writing clean, maintainable code and staying up-to-date with the latest industry trends. When I'm not coding or clarifying problems into roadmaps and work items, you can find me mentoring other developers, or exploring new technologies and approaches.",
+      "Outside of work, I enjoy watching films, playing video games, and spending time with my family. I also love to travel, bake sourdough bread, and practice Shaolin Gung Fu.",
     ],
     // Statistics to showcase your achievements - update numbers as you grow
     stats: [
-      { number: "45", label: "Projects (Films, TV series, Interactive Experiences) Delivered" },
-      { number: "22+", label: "Years Experience" },
-      { number: "100%", label: "Dedication" }
+      { number: "45", label: "Projects (Films/TV series/ Interactive) Delivered" },
+      { number: "22+", label: "Years Experience (8+ R&D and Product Management / 14 Engineering)" },
+      { number: "100%", label: "Dedication" },
     ],
-    approach: "I believe in continuous learning and staying curious about new technologies. My goal is to create solutions that make a meaningful impact. Whether it's improving user experience, optimizing performance, or solving complex problems, I approach each project with empathy, enthusiasm and attention to detail."
+    approach: "My goal is to deliver impact by improving user experience, optimizing performance, or solving complex problems, and I approach each project with empathy, enthusiasm and attention to detail."
   },
 
   // Skills Section - organized by category with proficiency levels (0-100)
   // Adjust percentages honestly based on your actual skill level
   skills: {
+    tagline: "Here are the technologies and tools I use to bring ideas into reality.",
     frontend: [
       { skill: 'PyQt/PySide', level: 95 },
       { skill: 'HTML/CSS', level: 90 },
@@ -58,7 +61,8 @@ export const personalData = {
   // Portfolio Projects - Replace these with your actual projects
   // Add as many projects as you want by adding new objects to this array
   projects_text: {
-    tagline: "Roles I've held in Animation and Technology",
+    tagline: "I have the unique perspectives of professionally working as an Engineer, R&D Manager, and a Product Manager in Animation Technology. Coupled with my experience as a Character Animator, I understand the challenges faced by artists, engineers, and the business.",
+    animtagline: "My roles and achievements below in Engineering, Management, and Product have been directly informed by my experience in Animation as a Character Animator on 'Rise of the Planet of the Apes' (Weta Digital), 'Night at the Museum' (Rhythm & Hues), and 'The Chronicles of Narnia: The Lion, the Witch and the Wardrobe' (Rhythm & Hues).",
     endline: "These are just a few highlights of my career. I have more projects and experiments on my GitHub profile.",
   },
 
@@ -162,6 +166,16 @@ export const personalData = {
           technologies: ['Jira', 'Confluence', 'Outlook', 'Teams'],
         },
         {
+          title: 'Cross-Department Collaboration',
+          description: 'Worked closely with Production, VFX Supervisors, and other departments to align technology solutions with creative needs.',
+          details: [
+            'Upheld high standards of collaboration',
+            'Successful integration of ML Facial research technology into production for Avatar: The Way of Water.',
+            'Led engineers to port VFX Animation pipeline data to Unreal Engine for the Meerkat experience, The Matrix Awakens, Fortnite and Overwatch shorts.',
+          ],
+          technologies: ['Outlook', 'Teams', 'Jira', 'Confluence'],
+        },
+        {
           title: 'Team Leadership and Development',
           description: 'Mentored and coached engineers, fostering a collaborative and innovative team culture.',
           details: [
@@ -169,15 +183,6 @@ export const personalData = {
             'Established workflow to increase scene performance by integrating GPU cached representations of Maya rigging',
           ],
           technologies: ['Jira', 'Confluence', 'Outlook', 'Teams'],
-        },
-        {
-          title: 'Cross-Department Collaboration',
-          description: 'Worked closely with Production, VFX Supervisors, and other departments to align technology solutions with creative needs.',
-          details: [
-            'Upheld high standards of collaboration',
-            'Successful integration of ML Facial research technology into production for Avatar: The Way of Water.',
-          ],
-          technologies: ['Outlook', 'Teams', 'Jira', 'Confluence'],
         },
         {
           title: 'Recruitment and Hiring',

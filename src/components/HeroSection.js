@@ -39,6 +39,8 @@ const HeroSection = ({ scrollToSection }) => {
             {/* Detailed Description */}
             <p className={`text-lg ${themeClasses.textSecondary} mb-8 leading-relaxed transition-colors duration-200`}>
               {personalData.description}
+              <br></br><br></br>
+              {personalData.jobseekline}
             </p>
             
             {/* Call-to-Action Buttons */}

@@ -17,7 +17,7 @@ const SkillsSection = () => {
       title: 'Frontend',
       skills: personalData.skills.frontend,
       progressColor: 'bg-blue-500', // Blue progress bars for frontend skills
-      description: 'User interface and experience technologies'
+      description: 'User Interfaces'
     },
     {
       key: 'backend',
@@ -38,7 +38,7 @@ const SkillsSection = () => {
       title: 'Currently Learning',
       skills: personalData.skills.learning,
       progressColor: 'bg-orange-500', // Orange progress bars for tools
-      description: 'Technologies I am actively learning'
+      description: 'Actively learning'
     },
   ];
 
@@ -102,7 +102,7 @@ const SkillsSection = () => {
             Skills & Technologies
           </h2>
           <p className={`text-xl ${themeClasses.textSecondary} max-w-3xl mx-auto transition-colors duration-200`}>
-            Here are the technologies and tools I use to bring ideas to life
+            {personalData.skills.tagline}
           </p>
         </div>
 
