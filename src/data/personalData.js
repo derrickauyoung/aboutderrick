@@ -37,7 +37,6 @@ export const personalData = {
      { skill: 'MEL', level: 95 },
      { skill: 'C++', level: 85 },
      { skill: 'Javascript', level: 85 },
-     { skill: 'React', level: 75 },
     ],
     tools: [
       { skill: 'Autodesk Maya', level: 95},
@@ -46,6 +45,14 @@ export const personalData = {
       { skill: 'Confluence', level: 90 },
       { skill: 'Testing/CI/CD', level: 80 },
     ],
+    learning: [
+      { skill: 'React', level: 50 },
+      { skill: 'Houdini/Solaris/USD', level: 45},
+      { skill: 'Unreal Engine', level: 35},
+      { skill: 'Roblox/lua', level: 35},
+      { skill: 'Unity/C#', level: 30},
+      { skill: 'Machine Learning/AI', level: 20},
+    ]
   },
 
   // Portfolio Projects - Replace these with your actual projects
@@ -96,6 +103,12 @@ export const personalData = {
           description: 'Wrote this personal portfolio site served on github with React.',
           outcome: "Learned React in 2025, and well, you've made it here!",
           codeUrl: 'https://github.com/derrickauyoung/aboutderrick',
+        },
+        {
+          title: 'Kubb: First Roblox Game',
+          description: 'Created my first Roblox game, a casual sports game based on the Scandinavian lawn game Kubb, using Roblox Studio and Lua scripting.',
+          outcome: 'Learned lua and roblox studio platform',
+          demoUrl: 'https://youtu.be/64NiKmW_I5I?si=X3WY_RWunXb7W_FJ',
         },
       ]
     },

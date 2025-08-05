@@ -33,6 +33,13 @@ const SkillsSection = () => {
       progressColor: 'bg-purple-500', // Purple progress bars for tools
       description: 'Development tools and methodologies'
     },
+    {
+      key: 'learning',
+      title: 'Currently Learning',
+      skills: personalData.skills.learning,
+      progressColor: 'bg-orange-500', // Orange progress bars for tools
+      description: 'Technologies I am actively learning'
+    },
   ];
 
   // Component for rendering a single skill with its progress bar
@@ -100,7 +107,7 @@ const SkillsSection = () => {
         </div>
 
         {/* Skills Grid - responsive layout that adapts to screen size */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {skillCategories.map((category) => (
             <SkillCategoryCard 
               key={category.key} 
