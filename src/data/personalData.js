@@ -34,12 +34,12 @@ export const personalData = {
     frontend: [
       { skill: 'PyQt/PySide', level: 95 },
       { skill: 'HTML/CSS', level: 90 },
+      { skill: 'Javascript', level: 85 },
     ],
     backend: [
      { skill: 'Python', level: 90 },
      { skill: 'MEL', level: 95 },
      { skill: 'C++', level: 85 },
-     { skill: 'Javascript', level: 85 },
     ],
     tools: [
       { skill: 'Autodesk Maya', level: 95},
@@ -93,6 +93,8 @@ export const personalData = {
           details: [
             'More efficient workflow and reduced context switching for artists on:',
             '   The Adventures of Tintin (2011)',
+            '   Rise of the Planet of the Apes (2011)',
+            '   X-Men: First Class (2011)',
           ],
           technologies: ['PySide2', 'Python'],
         },
@@ -170,7 +172,9 @@ export const personalData = {
           description: 'Worked closely with Production, VFX Supervisors, and other departments to align technology solutions with creative needs.',
           details: [
             'Upheld high standards of collaboration',
-            'Successful integration of ML Facial research technology into production for Avatar: The Way of Water.',
+            'Led teams to deliver research ML prototypes and integrate into productions for:',
+            '   AI Motion Library Search',
+            '   ML Facial for Avatar: The Way of Water',
             'Led engineers to port VFX Animation pipeline data to Unreal Engine for the Meerkat experience, The Matrix Awakens, Fortnite and Overwatch shorts.',
           ],
           technologies: ['Outlook', 'Teams', 'Jira', 'Confluence'],
@@ -208,6 +212,9 @@ export const personalData = {
           title: 'Roadmap Development',
           description: 'Created and maintained product roadmaps for Animation tools and pipeline, aligning with studio objectives and artist needs.',
           details: [
+            'Led teams to deliver research ML prototypes and integrate into production for:',
+            '   AI Motion Library Search',
+            '   ML Facial for Avatar: The Way of Water',
             'Successfully delivered efficiency initiatives for major projects:',
             '   Guardians of the Galaxy 3',
             '   Avatar: The Way of Water',
