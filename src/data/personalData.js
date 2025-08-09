@@ -1,4 +1,5 @@
 // Personal Information Configuration
+import { apes , aslan01, aslan02, museum01, museum02, museum03 } from '../assets/animReel';
 
 export const personalData = {
   // Basic Information - Update these with your actual details
@@ -66,6 +67,41 @@ export const personalData = {
     endline: "These are just a few highlights of my career. I have more projects and experiments on my GitHub profile.",
   },
 
+  animReel: {
+    tagline: "Additionally, I have contributed animation to a few feature films. Here are some highlights from my Animation Demo Reel.",
+    projectItems: [
+      {
+        title: "Rise of the Planet of the Apes (2011)",
+        image: apes,
+        description: "Animated Caesar and the villain in these two shots",
+      },
+      {
+        title: "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe (2005)",
+        image: aslan01,
+        description: "Keyframe animated the ropes on Aslan",
+      },
+      {
+        title: "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe (2005)",
+        image: aslan02,
+        description: "Keyframe animated the ropes on Aslan",
+      },
+      {
+        title: "Night at the Museum (2006)",
+        image: museum01,
+        description: "Keyframe animated the Zebra and Oryx walk cycles in the African Animals exhibit",
+      },
+      {
+        title: "Night at the Museum (2006)",
+        image: museum02,
+        description: "Assembled and edited Motion Capture for the Wild West Crowd Diorama shots",
+      },
+      {
+        title: "Night at the Museum (2006)",
+        image: museum03,
+        description: "Assembled and edited Motion Capture for the Wild West Crowd Diorama shots",
+      },
+    ],
+  },
   projects: [
     {
       title: 'Software Engineering for Animation and VFX',
@@ -281,7 +317,7 @@ export const personalData = {
 
   // Navigation sections - these correspond to the section IDs in your website
   // You can add or remove sections here, but make sure to update the components accordingly
-  navigation: ['home', 'about', 'skills', 'portfolio', 'contact']
+  navigation: ['home', 'about', 'skills', 'portfolio', 'reel', 'contact']
 };
 
 // Export individual sections if you need them separately

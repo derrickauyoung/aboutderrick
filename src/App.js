@@ -8,6 +8,7 @@ import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import SkillsSection from './components/SkillsSection';
 import PortfolioSection from './components/PortfolioSection';
+import AnimReelSection from './components/AnimSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
@@ -58,6 +59,10 @@ function App() {
           
           <section id="portfolio">
             <PortfolioSection scrollToSection={scrollToSection} />
+          </section>
+
+          <section id="reel">
+            <AnimReelSection scrollToSection={scrollToSection} />
           </section>
           
           <section id="contact">

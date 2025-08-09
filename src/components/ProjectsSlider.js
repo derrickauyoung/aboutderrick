@@ -204,7 +204,7 @@ const ProjectsSlider = ({ project, themeClasses, isDarkMode }) => {
                     ) : currentImageSrc ? (
                       <img 
                         src={currentImageSrc}
-                        alt={`Slide ${currentIndex + 1}`}
+                        alt={item.title}
                         className="w-full h-full object-cover"
                       />
                     ) : (
