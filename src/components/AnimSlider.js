@@ -67,13 +67,13 @@ const AnimSlider = ({ project, themeClasses, isDarkMode }) => {
       indicesToLoad.forEach(index => {
         const item = projectItems[index];
         if (item?.image && !loadedImages[item.image]) {
-          console.log('🔍 Attempting to load image:', item.image);
-          console.log('🔍 Current URL would be:', window.location.origin + item.image);
+          console.debug('🔍 Attempting to load image:', item.image);
+          console.debug('🔍 Current URL would be:', window.location.origin + item.image);
           
           const img = new Image();
           img.onload = () => {
-            console.log('✅ Image loaded successfully:', item.image);
-            console.log('✅ Image dimensions:', img.naturalWidth, 'x', img.naturalHeight);
+            console.debug('✅ Image loaded successfully:', item.image);
+            console.debug('✅ Image dimensions:', img.naturalWidth, 'x', img.naturalHeight);
             setLoadedImages(prev => ({
               ...prev,
               [item.image]: true
