@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/aboutderrick/static/css/main.bbb410bf.css",
-    "main.js": "/aboutderrick/static/js/main.075ef569.js",
+    "main.js": "/aboutderrick/static/js/main.229e8154.js",
     "static/media/AnimReel-aslan02.gif": "/aboutderrick/static/media/AnimReel-aslan02.442ff34edb5dec8ae498.gif",
     "static/media/AnimReel-museum03.gif": "/aboutderrick/static/media/AnimReel-museum03.71b254fada59c467ef45.gif",
     "static/media/AnimReel-aslan01.gif": "/aboutderrick/static/media/AnimReel-aslan01.1475372d9db809abb723.gif",
@@ -18,10 +18,10 @@
     "static/media/card06.png": "/aboutderrick/static/media/card06.d045d4573c908804644e.png",
     "index.html": "/aboutderrick/index.html",
     "main.bbb410bf.css.map": "/aboutderrick/static/css/main.bbb410bf.css.map",
-    "main.075ef569.js.map": "/aboutderrick/static/js/main.075ef569.js.map"
+    "main.229e8154.js.map": "/aboutderrick/static/js/main.229e8154.js.map"
   },
   "entrypoints": [
     "static/css/main.bbb410bf.css",
-    "static/js/main.075ef569.js"
+    "static/js/main.229e8154.js"
   ]
 }
