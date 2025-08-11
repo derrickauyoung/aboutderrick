@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/aboutderrick/static/css/main.bbb410bf.css",
-    "main.js": "/aboutderrick/static/js/main.4b8efa57.js",
+    "main.js": "/aboutderrick/static/js/main.85305dee.js",
     "static/js/320.86cd61c8.chunk.js": "/aboutderrick/static/js/320.86cd61c8.chunk.js",
     "static/js/739.6ddb620d.chunk.js": "/aboutderrick/static/js/739.6ddb620d.chunk.js",
     "static/js/692.0bb15e87.chunk.js": "/aboutderrick/static/js/692.0bb15e87.chunk.js",
@@ -15,19 +15,23 @@
     "static/media/AnimReel-museum02.gif": "/aboutderrick/static/media/AnimReel-museum02.0fc5e3c86a72a3246144.gif",
     "static/media/AnimReel-apes2.gif": "/aboutderrick/static/media/AnimReel-apes2.c1b8b7efbfd8fbd44d32.gif",
     "static/media/DerrickAuyoung.png": "/aboutderrick/static/media/DerrickAuyoung.390ae6543a356cff8be6.png",
+    "static/media/card08.png": "/aboutderrick/static/media/card08.49b63cedacf5bf54eebd.png",
+    "static/media/card10.png": "/aboutderrick/static/media/card10.9c311c46c47cec9cdd68.png",
     "static/media/card02.png": "/aboutderrick/static/media/card02.1cd04ec331d7d271370c.png",
     "static/media/card07.png": "/aboutderrick/static/media/card07.9f4a1a62ed8861edf5db.png",
+    "static/media/card11.png": "/aboutderrick/static/media/card11.a4b90fcaf77be0fde2bb.png",
     "static/media/card04.png": "/aboutderrick/static/media/card04.2f5aac493a322660209b.png",
     "static/media/card01.png": "/aboutderrick/static/media/card01.6e2ff9d44ad3edb61699.png",
     "static/media/card03.png": "/aboutderrick/static/media/card03.e43277f65c85a2ab67d4.png",
     "static/media/card05.png": "/aboutderrick/static/media/card05.b91cdf84097014499aa7.png",
+    "static/media/card09.png": "/aboutderrick/static/media/card09.32fbccedcea674d19cf5.png",
     "static/media/card06.png": "/aboutderrick/static/media/card06.d045d4573c908804644e.png",
     "index.html": "/aboutderrick/index.html",
     "main.bbb410bf.css.map": "/aboutderrick/static/css/main.bbb410bf.css.map",
-    "main.4b8efa57.js.map": "/aboutderrick/static/js/main.4b8efa57.js.map"
+    "main.85305dee.js.map": "/aboutderrick/static/js/main.85305dee.js.map"
   },
   "entrypoints": [
     "static/css/main.bbb410bf.css",
-    "static/js/main.4b8efa57.js"
+    "static/js/main.85305dee.js"
   ]
 }
