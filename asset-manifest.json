@@ -1,7 +1,13 @@
 {
   "files": {
     "main.css": "/aboutderrick/static/css/main.bbb410bf.css",
-    "main.js": "/aboutderrick/static/js/main.229e8154.js",
+    "main.js": "/aboutderrick/static/js/main.4b8efa57.js",
+    "static/js/320.86cd61c8.chunk.js": "/aboutderrick/static/js/320.86cd61c8.chunk.js",
+    "static/js/739.6ddb620d.chunk.js": "/aboutderrick/static/js/739.6ddb620d.chunk.js",
+    "static/js/692.0bb15e87.chunk.js": "/aboutderrick/static/js/692.0bb15e87.chunk.js",
+    "static/js/644.063553a1.chunk.js": "/aboutderrick/static/js/644.063553a1.chunk.js",
+    "static/js/731.4c4ba9cd.chunk.js": "/aboutderrick/static/js/731.4c4ba9cd.chunk.js",
+    "static/js/954.6ddd99c3.chunk.js": "/aboutderrick/static/js/954.6ddd99c3.chunk.js",
     "static/media/AnimReel-aslan02.gif": "/aboutderrick/static/media/AnimReel-aslan02.442ff34edb5dec8ae498.gif",
     "static/media/AnimReel-museum03.gif": "/aboutderrick/static/media/AnimReel-museum03.71b254fada59c467ef45.gif",
     "static/media/AnimReel-aslan01.gif": "/aboutderrick/static/media/AnimReel-aslan01.1475372d9db809abb723.gif",
@@ -18,10 +24,10 @@
     "static/media/card06.png": "/aboutderrick/static/media/card06.d045d4573c908804644e.png",
     "index.html": "/aboutderrick/index.html",
     "main.bbb410bf.css.map": "/aboutderrick/static/css/main.bbb410bf.css.map",
-    "main.229e8154.js.map": "/aboutderrick/static/js/main.229e8154.js.map"
+    "main.4b8efa57.js.map": "/aboutderrick/static/js/main.4b8efa57.js.map"
   },
   "entrypoints": [
     "static/css/main.bbb410bf.css",
-    "static/js/main.229e8154.js"
+    "static/js/main.4b8efa57.js"
   ]
 }
