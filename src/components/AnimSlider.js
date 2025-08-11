@@ -79,7 +79,7 @@ const AnimSlider = ({ project, themeClasses, isDarkMode }) => {
             
             // Handle both function imports and direct imports
             if (typeof item.image === 'function') {
-              console.log('Loading dynamic import for item', index);
+              console.debug('Loading dynamic import for item', index);
               const module = await item.image();
               imageSrc = module.default;
             } else {
@@ -87,7 +87,7 @@ const AnimSlider = ({ project, themeClasses, isDarkMode }) => {
               imageSrc = item.image;
             }
             
-            console.log('Image loaded for item', index, ':', imageSrc);
+            console.debug('Image loaded for item', index, ':', imageSrc);
             
             setLoadedImages(prev => ({
               ...prev,
@@ -109,6 +109,17 @@ const AnimSlider = ({ project, themeClasses, isDarkMode }) => {
       preloadImages();
     }
   }, [currentIndex, projectItems, loadedImages]);
+
+  // Auto-play effect
+  useEffect(() => {
+    if (!isAutoPlaying || projectItems.length <= 1) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % projectItems.length);
+    }, 10000);
+    
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, projectItems.length]);
 
   // Handle empty project items
   if (projectItems.length === 0) {

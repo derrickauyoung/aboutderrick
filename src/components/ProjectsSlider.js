@@ -11,6 +11,8 @@ const ProjectsSlider = ({ project, themeClasses, isDarkMode }) => {
   const [loadedImages, setLoadedImages] = useState({});
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  // New state to track random images assigned to each project
+  const [projectImages, setProjectImages] = useState({});
 
   // Destructure after all hooks are called
   const { imageFilenames, isLoaded, error, loadImage, getRandomFilename, totalImages } = imageHook;
@@ -19,6 +21,47 @@ const ProjectsSlider = ({ project, themeClasses, isDarkMode }) => {
   const projectItems = useMemo(() => {
     return project?.projectItems || [];
   }, [project?.projectItems]);
+
+  // Assign random images to each project when images are loaded
+  useEffect(() => {
+    if (!isLoaded || imageFilenames.length === 0 || projectItems.length === 0) return;
+    
+    // Only assign if we don't have assignments yet
+    if (Object.keys(projectImages).length === 0) {
+      const newProjectImages = {};
+      const usedFilenames = new Set();
+      let availableFilenames = [...imageFilenames]; // Create a copy we can modify
+      
+      for (let index = 0; index < projectItems.length; index++) {
+        const item = projectItems[index];
+        
+        // Skip if the project already has an image or icon
+        if (!item.image && !item.icon) {
+          let randomFilename;
+          
+          // If we've used all images, reset the available pool
+          if (availableFilenames.length === 0) {
+            availableFilenames = [...imageFilenames];
+          }
+          
+          // Select from unused images first
+          const randomIndex = Math.floor(Math.random() * availableFilenames.length);
+          const selectedIndex = availableFilenames[randomIndex];
+          randomFilename = getRandomFilename(imageFilenames.indexOf(selectedIndex));
+          
+          // Remove the selected filename from available pool
+          availableFilenames.splice(randomIndex, 1);
+          
+          if (randomFilename) {
+            newProjectImages[index] = randomFilename;
+            usedFilenames.add(randomFilename);
+          }
+        }
+      }
+      
+      setProjectImages(newProjectImages);
+    }
+  }, [isLoaded, imageFilenames.length, projectItems.length, getRandomFilename]);
 
   // Stable navigation functions
   const goToSlide = useCallback((index) => {
@@ -60,44 +103,38 @@ const ProjectsSlider = ({ project, themeClasses, isDarkMode }) => {
     }
   }, [touchStart, touchEnd, goToNext, goToPrevious]);
 
-  // Image preloading effect - simplified to avoid dependency issues
+  // Modified image preloading effect - now loads images assigned to projects
   useEffect(() => {
-    if (!isLoaded || imageFilenames.length === 0) return;
+    if (!isLoaded || Object.keys(projectImages).length === 0) return;
     
     const preloadImages = async () => {
+      // Get the images for current and nearby slides
       const indicesToLoad = [
-        currentIndex % imageFilenames.length,
-        (currentIndex + 1) % imageFilenames.length,
-        (currentIndex + 2) % imageFilenames.length
+        currentIndex,
+        (currentIndex + 1) % projectItems.length,
+        currentIndex > 0 ? currentIndex - 1 : projectItems.length - 1
       ];
       
       for (const index of indicesToLoad) {
-        const filename = imageFilenames[index];
-        if (filename) {
-          // Check if already loaded to avoid re-loading
-          setLoadedImages(prev => {
-            if (prev[filename]) return prev; // Already loaded, don't update
-            
-            // Load the image
-            loadImage(filename).then(src => {
-              if (src) {
-                setLoadedImages(current => ({
-                  ...current,
-                  [filename]: src
-                }));
-              }
-            }).catch(err => {
-              console.error(`Failed to preload ${filename}:`, err);
-            });
-            
-            return prev; // Return unchanged state for now
-          });
+        const filename = projectImages[index];
+        if (filename && !loadedImages[filename]) {
+          try {
+            const src = await loadImage(filename);
+            if (src) {
+              setLoadedImages(current => ({
+                ...current,
+                [filename]: src
+              }));
+            }
+          } catch (err) {
+            console.error(`Failed to preload ${filename}:`, err);
+          }
         }
       }
     };
     
     preloadImages();
-  }, [currentIndex, isLoaded, imageFilenames.length]); // Minimal dependencies
+  }, [currentIndex, isLoaded, projectImages, projectItems.length]);
 
   // Auto-play effect
   useEffect(() => {
@@ -110,15 +147,23 @@ const ProjectsSlider = ({ project, themeClasses, isDarkMode }) => {
     return () => clearInterval(interval);
   }, [isAutoPlaying, projectItems.length]);
 
-  // Get current image info
-  const currentFilename = useMemo(() => {
-    if (imageFilenames.length === 0) return null;
-    return imageFilenames[currentIndex % imageFilenames.length];
-  }, [imageFilenames, currentIndex]);
+  // Get current image info - now based on assigned random images
+  const currentImageInfo = useMemo(() => {
+    const currentItem = projectItems[currentIndex];
+    if (!currentItem) return { filename: null, src: null };
+    
+    // If project has its own image or icon, use that
+    if (currentItem.image) return { filename: null, src: currentItem.image };
+    if (currentItem.icon) return { filename: null, src: null };
+    
+    // Otherwise use assigned random image
+    const filename = projectImages[currentIndex];
+    const src = filename ? loadedImages[filename] : null;
+    
+    return { filename, src };
+  }, [projectItems, currentIndex, projectImages, loadedImages]);
 
-  const currentImageSrc = useMemo(() => {
-    return currentFilename ? loadedImages[currentFilename] : null;
-  }, [currentFilename, loadedImages]);
+
 
   // Handle error state
   if (error) {
@@ -184,143 +229,149 @@ const ProjectsSlider = ({ project, themeClasses, isDarkMode }) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {projectItems.map((item, index) => (
-            <div key={index} className="w-full flex-shrink-0">
-              <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} overflow-hidden`}>
-                <div className="grid grid-cols-1 md:grid-cols-2 min-h-[400px]">
-                  {/* Left Side - Visual/Image */}
-                  <div className={`${item.gradient || 'bg-gradient-to-br from-blue-500 to-purple-600'} 
-                                   flex items-center justify-center p-0 relative overflow-hidden`}>
-                    {item.image ? (
-                      <img 
-                        src={item.image} 
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : item.icon ? (
-                      <div className="text-6xl text-white opacity-80">
-                        {item.icon}
-                      </div>
-                    ) : currentImageSrc ? (
-                      <img 
-                        src={currentImageSrc}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="text-center text-white">
-                        <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 mx-auto">
-                          <span className="text-2xl font-bold">
-                            {(item.title || item.name || 'Initiative').charAt(0)}
-                          </span>
+          {projectItems.map((item, index) => {
+            // Get the image info for this specific project
+            const itemImageFilename = projectImages[index];
+            const itemImageSrc = itemImageFilename ? loadedImages[itemImageFilename] : null;
+            
+            return (
+              <div key={index} className="w-full flex-shrink-0">
+                <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} overflow-hidden`}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 min-h-[400px]">
+                    {/* Left Side - Visual/Image */}
+                    <div className={`${item.gradient || 'bg-gradient-to-br from-blue-500 to-purple-600'} 
+                                     flex items-center justify-center p-0 relative overflow-hidden`}>
+                      {item.image ? (
+                        <img 
+                          src={item.image} 
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : item.icon ? (
+                        <div className="text-6xl text-white opacity-80">
+                          {item.icon}
                         </div>
-                        <div className="text-sm opacity-75">Initiative #{index + 1}</div>
-                        {currentFilename && (
-                          <div className="text-xs opacity-60 mt-1">Loading {currentFilename}...</div>
-                        )}
-                      </div>
-                    )}
-                    
-                    {/* Decorative overlay */}
-                    <div className="absolute inset-0 bg-black bg-opacity-10"></div>
-                  </div>
-
-                  {/* Right Side - Content */}
-                  <div className="p-8 flex flex-col justify-center">
-                    <div className="space-y-4">
-                      {/* Title */}
-                      <h4 className={`text-2xl font-bold ${themeClasses.textPrimary}`}>
-                        {item.title || item.name || `Initiative ${index + 1}`}
-                      </h4>
-
-                      {/* Description */}
-                      <p className={`text-lg leading-relaxed ${
-                        isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                      }`}>
-                        {item.description || item.summary || 'No description available.'}
-                      </p>
-
-                      {/* Additional Details */}
-                      {item.details && (
-                        <div className="space-y-2">
-                          {item.details.map((detail, detailIndex) => (
-                            <div key={detailIndex} className="flex items-start gap-2">
-                              <Circle className="w-2 h-2 mt-2 text-blue-500 fill-current" />
-                              <span className={`text-sm ${
-                                isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                              }`}>
-                                {detail}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Action Buttons */}
-                      <div className="flex gap-3">
-                        {item.codeUrl && (
-                          <a 
-                            href={item.codeUrl}
-                            className={`
-                              flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
-                              border-2 transition-all duration-200 transform hover:-translate-y-0.5
-                              ${isDarkMode 
-                                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
-                                : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
-                              }
-                            `}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`View source code of ${item.title}`}
-                          >
-                            <Github size={16} />
-                            Source Code
-                          </a>
-                        )}
-                        {item.demoUrl && (
-                          <a 
-                            href={item.demoUrl}
-                            className={`
-                              flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
-                              border-2 transition-all duration-200 transform hover:-translate-y-0.5
-                              ${isDarkMode 
-                                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
-                                : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
-                              }
-                            `}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`View demo of ${item.title}`}
-                          >
-                            <YoutubeIcon size={16} />
-                            Youtube Demo
-                          </a>
-                        )}
-                      </div>
-
-                      {/* Tags/Technologies */}
-                      {item.technologies && (
-                        <div className="flex flex-wrap gap-2 mt-4">
-                          {item.technologies.map((tech, techIndex) => (
-                            <span
-                              key={techIndex}
-                              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                                isDarkMode
-                                  ? 'bg-gray-700 text-gray-300'
-                                  : 'bg-gray-100 text-gray-700'
-                              }`}
-                            >
-                              {tech}
+                      ) : itemImageSrc ? (
+                        <img 
+                          src={itemImageSrc}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="text-center text-white">
+                          <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <span className="text-2xl font-bold">
+                              {(item.title || item.name || 'Initiative').charAt(0)}
                             </span>
-                          ))}
+                          </div>
+                          <div className="text-sm opacity-75">Initiative #{index + 1}</div>
+                          {itemImageFilename && (
+                            <div className="text-xs opacity-60 mt-1">Loading {itemImageFilename}...</div>
+                          )}
                         </div>
                       )}
+                      
+                      {/* Decorative overlay */}
+                      <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+                    </div>
+
+                    {/* Right Side - Content */}
+                    <div className="p-8 flex flex-col justify-center">
+                      <div className="space-y-4">
+                        {/* Title */}
+                        <h4 className={`text-2xl font-bold ${themeClasses.textPrimary}`}>
+                          {item.title || item.name || `Initiative ${index + 1}`}
+                        </h4>
+
+                        {/* Description */}
+                        <p className={`text-lg leading-relaxed ${
+                          isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                        }`}>
+                          {item.description || item.summary || 'No description available.'}
+                        </p>
+
+                        {/* Additional Details */}
+                        {item.details && (
+                          <div className="space-y-2">
+                            {item.details.map((detail, detailIndex) => (
+                              <div key={detailIndex} className="flex items-start gap-2">
+                                <Circle className="w-2 h-2 mt-2 text-blue-500 fill-current" />
+                                <span className={`text-sm ${
+                                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                                }`}>
+                                  {detail}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Action Buttons */}
+                        <div className="flex gap-3">
+                          {item.codeUrl && (
+                            <a 
+                              href={item.codeUrl}
+                              className={`
+                                flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+                                border-2 transition-all duration-200 transform hover:-translate-y-0.5
+                                ${isDarkMode 
+                                  ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
+                                  : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
+                                }
+                              `}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`View source code of ${item.title}`}
+                            >
+                              <Github size={16} />
+                              Source Code
+                            </a>
+                          )}
+                          {item.demoUrl && (
+                            <a 
+                              href={item.demoUrl}
+                              className={`
+                                flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+                                border-2 transition-all duration-200 transform hover:-translate-y-0.5
+                                ${isDarkMode 
+                                  ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
+                                  : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
+                                }
+                              `}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`View demo of ${item.title}`}
+                            >
+                              <YoutubeIcon size={16} />
+                              Youtube Demo
+                            </a>
+                          )}
+                        </div>
+
+                        {/* Tags/Technologies */}
+                        {item.technologies && (
+                          <div className="flex flex-wrap gap-2 mt-4">
+                            {item.technologies.map((tech, techIndex) => (
+                              <span
+                                key={techIndex}
+                                className={`px-3 py-1 rounded-full text-xs font-medium ${
+                                  isDarkMode
+                                    ? 'bg-gray-700 text-gray-300'
+                                    : 'bg-gray-100 text-gray-700'
+                                }`}
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Navigation Arrows */}

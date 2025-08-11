@@ -72,7 +72,7 @@ export const personalData = {
       {
         title: "Rise of the Planet of the Apes (2011)",
         image: () => import("../assets/animReel/AnimReel-apes2.gif"),
-        description: "Animated Caesar and the villain in these two shots",
+        description: "Animated Caesar and the villain (body and facial) in these two shots",
       },
       {
         title: "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe (2005)",
