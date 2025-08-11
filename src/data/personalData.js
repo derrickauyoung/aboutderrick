@@ -14,7 +14,7 @@ export const personalData = {
     title: "My Journey",
     tagline: "Expertise as an Engineer, Motion R&D Head of Department, and Product Manager in Animation Technology",
     paragraphs: [
-      "With a background in computer science and over two decades of hands-on experience, I've gained a deep understanding of Animation tools, workflows, and pipeline technologies. My journey started when I saw the first 'Jurassic Park' in theaters, and it has evolved into a passion for contributing to fantastic visual and interactive media.",
+      "With a background in computer science and design/media arts, and over two decades of hands-on experience, I've gained a deep understanding of Animation tools, workflows, and pipeline technologies. My journey started when I saw the first 'Jurassic Park' in theaters, and it has evolved into a passion for contributing to fantastic visual and interactive media.",
       "I believe in open and transparent communication, continuous improvement, writing clean, maintainable code and staying up-to-date with the latest industry trends. When I'm not coding or clarifying problems into roadmaps and work items, you can find me mentoring other developers, or exploring new technologies and approaches.",
       "Outside of work, I enjoy watching films, playing video games, and spending time with my family. I also love to travel, bake sourdough bread, and practice Shaolin Gung Fu.",
     ],
