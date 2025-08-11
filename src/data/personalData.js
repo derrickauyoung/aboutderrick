@@ -1,5 +1,4 @@
 // Personal Information Configuration
-import { apes , aslan01, aslan02, museum01, museum02, museum03 } from '../assets/animReel';
 
 export const personalData = {
   // Basic Information - Update these with your actual details
@@ -72,32 +71,32 @@ export const personalData = {
     projectItems: [
       {
         title: "Rise of the Planet of the Apes (2011)",
-        image: apes,
+        image: () => import("../assets/animReel/AnimReel-apes2.gif"),
         description: "Animated Caesar and the villain in these two shots",
       },
       {
         title: "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe (2005)",
-        image: aslan01,
+        image: () => import("../assets/animReel/AnimReel-aslan01.gif"),
         description: "Keyframe animated the ropes on Aslan",
       },
       {
         title: "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe (2005)",
-        image: aslan02,
+        image: () => import("../assets/animReel/AnimReel-aslan02.gif"),
         description: "Keyframe animated the ropes on Aslan",
       },
       {
         title: "Night at the Museum (2006)",
-        image: museum01,
+        image: () => import("../assets/animReel/AnimReel-museum01.gif"),
         description: "Keyframe animated the Zebra and Oryx walk cycles in the African Animals exhibit",
       },
       {
         title: "Night at the Museum (2006)",
-        image: museum02,
+        image: () => import("../assets/animReel/AnimReel-museum02.gif"),
         description: "Assembled and edited Motion Capture for the Wild West Crowd Diorama shots",
       },
       {
         title: "Night at the Museum (2006)",
-        image: museum03,
+        image: () => import("../assets/animReel/AnimReel-museum03.gif"),
         description: "Assembled and edited Motion Capture for the Wild West Crowd Diorama shots",
       },
     ],

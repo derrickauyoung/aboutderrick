@@ -54,9 +54,14 @@ const AnimSlider = ({ project, themeClasses, isDarkMode }) => {
     }
   }, [touchStart, touchEnd, goToNext, goToPrevious]);
 
+  const loadImage = async (imagePath) => {
+    const module = await imagePath();
+    return module.default;
+  };
+
   // Lazy load images for current and adjacent slides
   useEffect(() => {
-    const preloadImages = () => {
+    const preloadImages = async () => {
       // Load current slide and adjacent ones
       const indicesToLoad = [
         (currentIndex - 1 + projectItems.length) % projectItems.length, // Previous
@@ -64,57 +69,53 @@ const AnimSlider = ({ project, themeClasses, isDarkMode }) => {
         (currentIndex + 1) % projectItems.length // Next
       ];
       
-      indicesToLoad.forEach(index => {
+      for (const index of indicesToLoad) {
         const item = projectItems[index];
-        if (item?.image && !loadedImages[item.image]) {
-          console.debug('🔍 Attempting to load image:', item.image);
-          console.debug('🔍 Current URL would be:', window.location.origin + item.image);
-          
-          const img = new Image();
-          img.onload = () => {
-            console.debug('✅ Image loaded successfully:', item.image);
-            console.debug('✅ Image dimensions:', img.naturalWidth, 'x', img.naturalHeight);
-            setLoadedImages(prev => ({
-              ...prev,
-              [item.image]: true
-            }));
-          };
-          img.onerror = (error) => {
-            console.error('❌ Failed to load image:', item.image);
-            console.error('❌ Full URL attempted:', img.src);
-            console.error('❌ Error event:', error);
+        
+        // Check if item has an image (could be function or direct import)
+        if (item?.image && !loadedImages[index]) {
+          try {
+            let imageSrc;
             
-            // Let's try to fetch it directly to see the exact error
-            fetch(item.image)
-              .then(response => {
-                console.error('❌ Fetch response status:', response.status, response.statusText);
-                console.error('❌ Fetch response headers:', [...response.headers.entries()]);
-              })
-              .catch(fetchError => {
-                console.error('❌ Fetch completely failed:', fetchError);
-              });
+            // Handle both function imports and direct imports
+            if (typeof item.image === 'function') {
+              console.log('Loading dynamic import for item', index);
+              const module = await item.image();
+              imageSrc = module.default;
+            } else {
+              // Direct import (already resolved)
+              imageSrc = item.image;
+            }
+            
+            console.log('Image loaded for item', index, ':', imageSrc);
             
             setLoadedImages(prev => ({
               ...prev,
-              [item.image]: 'failed'
+              [index]: imageSrc
             }));
-          };
-          img.src = item.image;
+            
+          } catch (error) {
+            console.error(`Failed to load image for item ${index}:`, error);
+            setLoadedImages(prev => ({
+              ...prev,
+              [index]: 'failed'
+            }));
+          }
         }
-      });
+      }
     };
 
     if (projectItems.length > 0) {
       preloadImages();
     }
-  }, [currentIndex, projectItems]);
+  }, [currentIndex, projectItems, loadedImages]);
 
   // Handle empty project items
   if (projectItems.length === 0) {
     return (
       <div className="text-center py-8">
         <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
-          No project items available
+          No clips available
         </p>
       </div>
     );
@@ -139,125 +140,130 @@ const AnimSlider = ({ project, themeClasses, isDarkMode }) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {projectItems.map((item, index) => (
-            <div key={index} className="w-full flex-shrink-0">
-              <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} overflow-hidden`}>
-                <div className="flex flex-col">
-                  {/* Top Row - Visual/Image - Match GIF dimensions */}
-                  <div className={`${item.gradient || 'bg-gradient-to-br from-blue-500 to-purple-600'} 
-                                   flex items-center justify-center p-0 relative overflow-hidden`}
-                       style={{ minHeight: item.image ? 'auto' : '300px' }}>
-                    {item.image ? (
-                      <>
-                        {loadedImages[item.image] === true ? (
-                          <img 
-                            src={item.image} 
-                            alt={item.title}
-                            className="w-full h-auto object-contain max-w-full"
-                            style={{ display: 'block' }}
-                          />
-                        ) : loadedImages[item.image] === 'failed' ? (
-                          // Show fallback for failed images
-                          <div className="text-center text-white">
-                            <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 mx-auto">
-                              <span className="text-2xl font-bold">
-                                {(item.title || item.name || 'Initiative').charAt(0)}
-                              </span>
-                            </div>
-                            <div className="text-sm opacity-75">Image failed to load</div>
-                          </div>
-                        ) : (
-                          // Loading placeholder
-                          <div className="w-full h-full flex items-center justify-center">
+          {projectItems.map((item, index) => {
+            // Get the loaded image for this specific item
+            const itemImage = loadedImages[index];
+            
+            return (
+              <div key={index} className="w-full flex-shrink-0">
+                <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} overflow-hidden`}>
+                  <div className="flex flex-col">
+                    {/* Top Row - Visual/Image - Match GIF dimensions */}
+                    <div className={`${item.gradient || 'bg-gradient-to-br from-blue-500 to-purple-600'} 
+                                     flex items-center justify-center p-0 relative overflow-hidden`}
+                         style={{ minHeight: itemImage && itemImage !== 'failed' ? 'auto' : '300px' }}>
+                      {item.image ? (
+                        <>
+                          {itemImage && itemImage !== 'failed' ? (
+                            <img 
+                              src={itemImage} 
+                              alt={item.title}
+                              className="w-full h-auto object-contain max-w-full"
+                              style={{ display: 'block' }}
+                            />
+                          ) : itemImage === 'failed' ? (
+                            // Show fallback for failed images
                             <div className="text-center text-white">
-                              <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                              <div className="text-sm opacity-75">Loading image...</div>
+                              <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                                <span className="text-2xl font-bold">
+                                  {(item.title || item.name || 'Initiative').charAt(0)}
+                                </span>
+                              </div>
+                              <div className="text-sm opacity-75">Image failed to load</div>
                             </div>
-                          </div>
-                        )}
-                      </>
-                    ) : item.icon ? (
-                      <div className="text-6xl text-white opacity-80">
-                        {item.icon}
-                      </div>
-                    ) : (
-                      // Fallback content
-                      <div className="text-center text-white">
-                        <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 mx-auto">
-                          <span className="text-2xl font-bold">
-                            {(item.title || item.name || 'Initiative').charAt(0)}
-                          </span>
+                          ) : (
+                            // Loading placeholder
+                            <div className="w-full h-full flex items-center justify-center">
+                              <div className="text-center text-white">
+                                <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                                <div className="text-sm opacity-75">Loading image...</div>
+                              </div>
+                            </div>
+                          )}
+                        </>
+                      ) : item.icon ? (
+                        <div className="text-6xl text-white opacity-80">
+                          {item.icon}
                         </div>
-                        <div className="text-sm opacity-75">Initiative #{index + 1}</div>
-                      </div>
-                    )}
-                    
-                    {/* Decorative overlay */}
-                    <div className="absolute inset-0 bg-black bg-opacity-10"></div>
-                  </div>
+                      ) : (
+                        // Fallback content
+                        <div className="text-center text-white">
+                          <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <span className="text-2xl font-bold">
+                              {(item.title || item.name || 'Initiative').charAt(0)}
+                            </span>
+                          </div>
+                          <div className="text-sm opacity-75">Initiative #{index + 1}</div>
+                        </div>
+                      )}
+                      
+                      {/* Decorative overlay */}
+                      <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+                    </div>
 
-                  {/* Bottom Row - Content - Compact for 2 lines */}
-                  <div className="p-4 flex flex-row justify-center" style={{ minHeight: '120px' }}>
-                    <div className="space-y-2 text-center max-w-2xl">
-                      {/* Title */}
-                      <h4 className={`text-lg font-bold ${themeClasses.textPrimary} line-clamp-1`}>
-                        {item.title || item.name || `Initiative ${index + 1}`}
-                      </h4>
+                    {/* Bottom Row - Content - Compact for 2 lines */}
+                    <div className="p-4 flex flex-row justify-center" style={{ minHeight: '120px' }}>
+                      <div className="space-y-2 text-center max-w-2xl">
+                        {/* Title */}
+                        <h4 className={`text-lg font-bold ${themeClasses.textPrimary} line-clamp-1`}>
+                          {item.title || item.name || `Initiative ${index + 1}`}
+                        </h4>
 
-                      {/* Description - Limited to 2 lines */}
-                      <p className={`text-sm leading-tight line-clamp-2 ${
-                        isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                      }`}>
-                        {item.description || item.summary || 'No description available.'}
-                      </p>
+                        {/* Description - Limited to 2 lines */}
+                        <p className={`text-sm leading-tight line-clamp-2 ${
+                          isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                        }`}>
+                          {item.description || item.summary || 'No description available.'}
+                        </p>
 
-                      {/* Action Buttons - Compact */}
-                      <div className="flex gap-2 justify-center mt-2">
-                        {item.codeUrl && (
-                          <a 
-                            href={item.codeUrl}
-                            className={`
-                              flex items-center gap-1 px-3 py-1 rounded-md text-xs font-medium
-                              border transition-all duration-200
-                              ${isDarkMode 
-                                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
-                                : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
-                              }
-                            `}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`View source code of ${item.title}`}
-                          >
-                            <Github size={12} />
-                            Code
-                          </a>
-                        )}
-                        {item.demoUrl && (
-                          <a 
-                            href={item.demoUrl}
-                            className={`
-                              flex items-center gap-1 px-3 py-1 rounded-md text-xs font-medium
-                              border transition-all duration-200
-                              ${isDarkMode 
-                                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
-                                : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
-                              }
-                            `}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`View demo of ${item.title}`}
-                          >
-                            <YoutubeIcon size={12} />
-                            Demo
-                          </a>
-                        )}
+                        {/* Action Buttons - Compact */}
+                        <div className="flex gap-2 justify-center mt-2">
+                          {item.codeUrl && (
+                            <a 
+                              href={item.codeUrl}
+                              className={`
+                                flex items-center gap-1 px-3 py-1 rounded-md text-xs font-medium
+                                border transition-all duration-200
+                                ${isDarkMode 
+                                  ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
+                                  : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
+                                }
+                              `}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`View source code of ${item.title}`}
+                            >
+                              <Github size={12} />
+                              Code
+                            </a>
+                          )}
+                          {item.demoUrl && (
+                            <a 
+                              href={item.demoUrl}
+                              className={`
+                                flex items-center gap-1 px-3 py-1 rounded-md text-xs font-medium
+                                border transition-all duration-200
+                                ${isDarkMode 
+                                  ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
+                                  : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
+                                }
+                              `}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`View demo of ${item.title}`}
+                            >
+                              <YoutubeIcon size={12} />
+                              Demo
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Navigation Arrows */}
