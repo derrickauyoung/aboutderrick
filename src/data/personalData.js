@@ -198,7 +198,7 @@ export const personalData = {
           details: [
             'Established a clear vision and roadmap for the Motion R&D team',
             'Aligned work with studio goals and artist needs',
-            'Served as Primary Stakeholder for modern refactor of the Chronos (Motion Pipeline Tool) project',
+            'Served as Primary Stakeholder for modern refactor of Motion Pipeline Tools',
           ],
           technologies: ['Jira', 'Confluence', 'Outlook', 'Teams'],
         },
@@ -207,10 +207,8 @@ export const personalData = {
           description: 'Worked closely with Production, VFX Supervisors, and other departments to align technology solutions with creative needs.',
           details: [
             'Upheld high standards of collaboration',
-            'Led teams to deliver research ML prototypes and integrate into productions for:',
-            '   AI Motion Library Search',
-            '   ML Facial for Avatar: The Way of Water',
-            'Led engineers to port VFX Animation pipeline data to Unreal Engine for the Meerkat experience, The Matrix Awakens, Fortnite and Overwatch shorts.',
+            'Led teams to deliver research ML prototypes and integrate into production',
+            'Led engineers to port VFX Animation pipeline data to Unreal Engine',
           ],
           technologies: ['Outlook', 'Teams', 'Jira', 'Confluence'],
         },
@@ -247,9 +245,7 @@ export const personalData = {
           title: 'Roadmap Development',
           description: 'Created and maintained product roadmaps for Animation tools and pipeline, aligning with studio objectives and artist needs.',
           details: [
-            'Led teams to deliver research ML prototypes and integrate into production for:',
-            '   AI Motion Library Search',
-            '   ML Facial for Avatar: The Way of Water',
+            'Led teams to deliver research ML prototypes and integrate into production',
             'Successfully delivered efficiency initiatives for major projects:',
             '   Guardians of the Galaxy 3',
             '   Avatar: The Way of Water',
