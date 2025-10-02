@@ -2,11 +2,37 @@
 // This component demonstrates advanced data mapping and interactive card layouts
 
 import React, { useState } from 'react';
-import { ExternalLink, Github, MapPin, Calendar, Mail } from 'lucide-react';
+import { Download, ExternalLink, Github, MapPin, Calendar, Mail } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import Modal from './Modal';
 import ProjectDetails from './ProjectDetails';
 import { personalData } from '../data/personalData';
+
+const handleDownload = (category) => {
+  // Map categories to their respective resume filenames
+  const resumeMap = {
+    'Management': 'DerrickAuyoung_EM_Resume.pdf',
+    'Product': 'DerrickAuyoung_PM_Resume.pdf',
+    'Engineering': 'DerrickAuyoung_SE_Resume.pdf'
+  };
+
+  const filename = resumeMap[category];
+  
+  // Handle case where category doesn't match any known type
+  if (!filename) {
+    console.warn(`Unknown category: ${category}`);
+    return;
+  }
+
+  const link = document.createElement('a');
+  link.href = `${process.env.PUBLIC_URL}/${filename}`;
+  link.download = filename;
+
+  // Trigger the download
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 const PortfolioSection = () => {
   // Get theme classes for consistent styling
@@ -23,34 +49,23 @@ const PortfolioSection = () => {
     setSelectedProject(null);
   };
 
-  // Component for rendering individual project cards
-  // This is a complex component that demonstrates several React patterns
   const ProjectCard = ({ project, index }) => (
     <div className={`
       ${themeClasses.cardBackground} rounded-xl shadow-lg overflow-hidden 
       hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2
       border ${themeClasses.border}
+      flex flex-col h-full  /* Add these classes */
     `}>
-      {/* 
-        Project Image Placeholder 
-        In a real application, you'd replace this with actual project screenshots
-        The gradient and initials provide a professional look while you collect images
-      */}
+      {/* Project Image - stays at the top */}
       <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
-        {/* Background pattern for visual interest */}
         <div className="absolute inset-0 bg-black opacity-10"></div>
         
-        {/* Project initials as placeholder */}
         <div className="relative z-10">
           <div className="text-white text-3xl font-bold mb-2">
             {project.category}
-            {/* {getProjectInitials(project.title)} */}
-          </div>
-          <div className="text-white text-sm opacity-80 text-center">
           </div>
         </div>
         
-        {/* Overlay that appears on hover - adds interactivity */}
         <div
           onClick={() => handleProjectClick(project)}
           role="button" 
@@ -64,18 +79,16 @@ const PortfolioSection = () => {
         </div>
       </div>
       
-      {/* Project Information Section */}
-      <div className="p-6">
-        {/* Project Title */}
+      {/* Project Information Section - this will grow to fill available space */}
+      <div className="p-6 flex flex-col flex-grow">  {/* Modified this line */}
         <h3 className={`text-xl font-bold ${themeClasses.textPrimary} mb-3 transition-colors duration-200`}>
           {project.title}
         </h3>
         
-        {/* Project Description */}
         <p className={`${themeClasses.textSecondary} mb-4 leading-relaxed text-sm transition-colors duration-200`}>
           {project.description}
         </p>
-        
+      
         {/* Technology Tags */}
         <div className="flex flex-wrap gap-2 mb-6">
           {project.technologies.map((tech, techIndex) => (
@@ -94,36 +107,29 @@ const PortfolioSection = () => {
           ))}
         </div>
         
-        {/* Project Action Buttons */}
-        <div className="flex gap-3">
-          {/* Live Demo Button */}
+        {/* Spacer that pushes buttons to bottom */}
+        <div className="flex-grow"></div>
+        
+        {/* Project Action Buttons - will stick to bottom */}
+        <div className="flex gap-3 mt-auto">  {/* Added mt-auto */}
+          {/* See More Button */}
           <button
             onClick={() => setSelectedProject(project)}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200 text-sm font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200 text-sm font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
             aria-label={`See more info on: ${project.title}`}
           >
             See more
           </button>
-          {/* Source Code Button */}
-          {/*}
-          <a 
-            href={project.codeUrl}
-            className={`
-              flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
-              border-2 transition-all duration-200 transform hover:-translate-y-0.5
-              ${isDarkMode 
-                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800' 
-                : 'border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
-              }
-            `}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View source code of ${project.title}`}
+
+          {/* Resume Download Button */}
+          <button
+            onClick={() => handleDownload(project.category)}
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors duration-200 text-sm font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+            aria-label={`Download Derrick's ${project.category} Resume`}  
           >
-            <Github size={16} />
-            Source
-          </a>
-          */}
+            <Download size={20} />
+            Download Resume
+          </button>
         </div>
       </div>
     </div>

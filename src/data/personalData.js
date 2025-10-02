@@ -103,7 +103,7 @@ export const personalData = {
   },
   projects: [
     {
-      title: 'Software Engineering for Animation and VFX',
+      title: 'Software Engineering - Anim/VFX',
       category: 'Engineering',
       description: 'Expertise in developing technical solutions for Animators delivering blockbuster visual effects and character performances.',
       technologies: ['PySide', 'Python', 'C++', 'Jira API', 'JavaScript', 'React'],
