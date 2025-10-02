@@ -2,23 +2,10 @@
 // This component demonstrates how to work with complex data structures and create engaging layouts
 
 import React from 'react';
-import { Download } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { personalData } from '../data/personalData';
 
-const handleDownload = () => {
-  // Create a temporary link element
-  const link = document.createElement('a');
-  link.href = `${process.env.PUBLIC_URL}/DerrickAuyoung_Resume.pdf`;
-  link.download = 'DerrickAuyoung_Resume.pdf'; // This will be the downloaded filename
-  
-  // Trigger the download
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
-const AboutSection = () => {
+const AboutSection = ({scrollToSection}) => {
   // Get theme classes for consistent styling across light and dark modes
   const { themeClasses } = useTheme();
 
@@ -69,18 +56,29 @@ const AboutSection = () => {
               </p>
             ))}
             
-            {/* Call-to-Action Button */}
-            <div className="flex items-center gap-4 mt-8">
+            {/* Call-to-Action Buttons */}
+            <div className="flex gap-3 mt-auto">
+            
               <button
-               onClick={handleDownload}
+               onClick={() => scrollToSection('portfolio')}
                className={`
                 flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-700 text-white 
                 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200
                 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200
               `}>
-                <Download size={20} />
-                Download Resume
+                Get Resume
               </button>
+
+              <button
+               onClick={() => scrollToSection('skills')}
+               className={`
+                flex items-center gap-2 px-6 py-3 bg-blue-400 dark:bg-blue-600 text-white 
+                rounded-lg hover:bg-blue-600 dark:hover:bg-blue-500 transition-colors duration-200
+                shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200
+              `}>
+                See Skills
+              </button>
+
             </div>
           </div>
           
