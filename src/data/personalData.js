@@ -1,4 +1,5 @@
 // Personal Information Configuration
+import MyMealPlannerImg from "../assets/MyMealPlanner.png";
 
 export const personalData = {
   // Basic Information - Update these with your actual details
@@ -106,11 +107,24 @@ export const personalData = {
       title: 'Software Engineering - Anim/VFX',
       category: 'Engineering',
       description: 'Expertise in developing technical solutions for Animators delivering blockbuster visual effects and character performances.',
-      technologies: ['PySide', 'Python', 'C++', 'Jira API', 'JavaScript', 'React'],
+      technologies: ['PySide', 'Python', 'C++', 'Jira API', 'JavaScript', 'React', 'Flask', 'Google ADK/Cloud Run', 'Vertex AI'],
       demoUrl: 'https://your-demo-url.com',
       codeUrl: 'https://github.com/yourusername/project',
       gradient: 'from-blue-400 to-blue-600', // Tailwind gradient classes
       projectItems: [
+        {
+          title: 'My Meal Planner',
+          description: 'A meal planner using AI agents to do the difficult work of collecting and summarizing a meal plan and ingredients lists.',
+          details: [
+            'I wanted to save my wife Madison hours of time every week planning meals for our family of 4, so I applied what I learned \
+            at a 5-day Intensive AI Agents workshop by Kaggle and Google to build this full stack web app.',
+            'Utilizes Google ADK for LLM access, Google Cloud Run and Flask for backend API, with a React frontend',
+          ],
+          technologies: ['Python', 'Flask', 'React', 'Google ADK', 'Google Cloud Run', 'Vertex AI'],
+          demoUrl: 'https://youtu.be/mZZCdhpuhX0',
+          codeUrl: 'https://github.com/derrickauyoung/mymealplanner',
+          image: MyMealPlannerImg,
+        },
         {
           title: 'Chronos Motion Pipeline Tool',
           description: 'Lead developer at Wētā Digital on the next-generation motion asset browser for Motion artists for the Avatar sequels, built with PySide2 and Python, that integrates with Autodesk Maya to streamline the animation workflow.',
