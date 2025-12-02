@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/aboutderrick/static/css/main.bbb410bf.css",
-    "main.js": "/aboutderrick/static/js/main.e82206d2.js",
+    "main.js": "/aboutderrick/static/js/main.ccb53b8f.js",
     "static/js/320.86cd61c8.chunk.js": "/aboutderrick/static/js/320.86cd61c8.chunk.js",
     "static/js/739.6ddb620d.chunk.js": "/aboutderrick/static/js/739.6ddb620d.chunk.js",
     "static/js/692.0bb15e87.chunk.js": "/aboutderrick/static/js/692.0bb15e87.chunk.js",
@@ -20,6 +20,7 @@
     "static/media/card02.png": "/aboutderrick/static/media/card02.1cd04ec331d7d271370c.png",
     "static/media/card07.png": "/aboutderrick/static/media/card07.9f4a1a62ed8861edf5db.png",
     "static/media/card11.png": "/aboutderrick/static/media/card11.a4b90fcaf77be0fde2bb.png",
+    "static/media/MyMealPlanner.png": "/aboutderrick/static/media/MyMealPlanner.e6f038df57a6009716b7.png",
     "static/media/card04.png": "/aboutderrick/static/media/card04.2f5aac493a322660209b.png",
     "static/media/card01.png": "/aboutderrick/static/media/card01.6e2ff9d44ad3edb61699.png",
     "static/media/card03.png": "/aboutderrick/static/media/card03.e43277f65c85a2ab67d4.png",
@@ -28,10 +29,10 @@
     "static/media/card06.png": "/aboutderrick/static/media/card06.d045d4573c908804644e.png",
     "index.html": "/aboutderrick/index.html",
     "main.bbb410bf.css.map": "/aboutderrick/static/css/main.bbb410bf.css.map",
-    "main.e82206d2.js.map": "/aboutderrick/static/js/main.e82206d2.js.map"
+    "main.ccb53b8f.js.map": "/aboutderrick/static/js/main.ccb53b8f.js.map"
   },
   "entrypoints": [
     "static/css/main.bbb410bf.css",
-    "static/js/main.e82206d2.js"
+    "static/js/main.ccb53b8f.js"
   ]
 }
