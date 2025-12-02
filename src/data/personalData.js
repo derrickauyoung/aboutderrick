@@ -18,6 +18,7 @@ export const personalData = {
       "With a background in computer science and design/media arts, and over two decades of hands-on experience, I've gained a deep understanding of Animation tools, workflows, and pipeline technologies. My journey started when I saw the first 'Jurassic Park' in theaters, and it has evolved into a passion for contributing to fantastic visual and interactive media.",
       "I believe in open and transparent communication, continuous improvement, writing clean, maintainable code and staying up-to-date with the latest industry trends. When I'm not coding or clarifying problems into roadmaps and work items, you can find me mentoring other developers, or exploring new technologies and approaches.",
       "Outside of work, I enjoy watching films, playing video games, and spending time with my family. I also love to travel, bake sourdough bread, and practice Shaolin Gung Fu.",
+      "Most recently in November of 2025, I completed a 5-Day Intensive course on Agentic AI hosted by Google and Kaggle, where I learned how to set up and deploy AI Agents to solve real world problems.",
     ],
     // Statistics to showcase your achievements - update numbers as you grow
     stats: [
@@ -55,7 +56,7 @@ export const personalData = {
       { skill: 'Unreal Engine', level: 35},
       { skill: 'Roblox/lua', level: 35},
       { skill: 'Unity/C#', level: 30},
-      { skill: 'Machine Learning/AI', level: 20},
+      { skill: 'Agentic AI', level: 85},
     ]
   },
 
@@ -116,7 +117,7 @@ export const personalData = {
           title: 'My Meal Planner',
           description: 'A meal planner using AI agents to do the difficult work of collecting and summarizing a meal plan and ingredients lists.',
           details: [
-            'I wanted to save my wife Madison hours of time every week planning meals for our family of 4, so I applied what I learned \
+            'I wanted to save my wife hours of time every week planning meals for our family of 4, so I applied what I learned \
             at a 5-day Intensive AI Agents workshop by Kaggle and Google to build this full stack web app.',
             'Utilizes Google ADK for LLM access, Google Cloud Run and Flask for backend API, with a React frontend',
           ],
