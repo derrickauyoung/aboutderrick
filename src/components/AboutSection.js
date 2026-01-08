@@ -5,6 +5,34 @@ import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { personalData } from '../data/personalData';
 
+
+const handleDownload = (category) => {
+  // Map categories to their respective resume filenames
+  const resumeMap = {
+    'Management': 'DerrickAuyoung_EM_Resume.pdf',
+    'Product': 'DerrickAuyoung_PM_Resume.pdf',
+    'Engineering': 'DerrickAuyoung_SE_Resume.pdf',
+    'WorkflowArchitect': 'DerrickAuyoung_PWFA_Resume_2026.pdf',
+  };
+
+  const filename = resumeMap[category];
+  
+  // Handle case where category doesn't match any known type
+  if (!filename) {
+    console.warn(`Unknown category: ${category}`);
+    return;
+  }
+
+  const link = document.createElement('a');
+  link.href = `${process.env.PUBLIC_URL}/${filename}`;
+  link.download = 'DerrickAuyoung_Resume.pdf';
+
+  // Trigger the download
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 const AboutSection = ({scrollToSection}) => {
   // Get theme classes for consistent styling across light and dark modes
   const { themeClasses } = useTheme();
@@ -60,13 +88,13 @@ const AboutSection = ({scrollToSection}) => {
             <div className="flex gap-3 mt-auto">
             
               <button
-               onClick={() => scrollToSection('portfolio')}
+               onClick={() => handleDownload('WorkflowArchitect')}
                className={`
                 flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-700 text-white 
                 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200
                 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200
               `}>
-                Get Resume
+                Download Resume
               </button>
 
               <button

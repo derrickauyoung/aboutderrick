@@ -8,31 +8,6 @@ import Modal from './Modal';
 import ProjectDetails from './ProjectDetails';
 import { personalData } from '../data/personalData';
 
-const handleDownload = (category) => {
-  // Map categories to their respective resume filenames
-  const resumeMap = {
-    'Management': 'DerrickAuyoung_EM_Resume.pdf',
-    'Product': 'DerrickAuyoung_PM_Resume.pdf',
-    'Engineering': 'DerrickAuyoung_SE_Resume.pdf'
-  };
-
-  const filename = resumeMap[category];
-  
-  // Handle case where category doesn't match any known type
-  if (!filename) {
-    console.warn(`Unknown category: ${category}`);
-    return;
-  }
-
-  const link = document.createElement('a');
-  link.href = `${process.env.PUBLIC_URL}/${filename}`;
-  link.download = filename;
-
-  // Trigger the download
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
 
 const PortfolioSection = () => {
   // Get theme classes for consistent styling
@@ -119,16 +94,6 @@ const PortfolioSection = () => {
             aria-label={`See more info on: ${project.title}`}
           >
             See more
-          </button>
-
-          {/* Resume Download Button */}
-          <button
-            onClick={() => handleDownload(project.category)}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors duration-200 text-sm font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
-            aria-label={`Download Derrick's ${project.category} Resume`}  
-          >
-            <Download size={20} />
-            Download Resume
           </button>
         </div>
       </div>
